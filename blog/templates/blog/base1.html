@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Wet Nose blog</title>
+        <title>Django Girls blog</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -23,14 +23,6 @@ body {font-family: "Lato", sans-serif}
     padding: 5px; /* Поля вокруг текста */
     border: solid 1px black; /* Параметры рамки */
    } 
-
-   .colortext {
-     color: red; /* Красный цвет выделения */
-   }
-
-   h1,h3 {
-    font-size: 2vw;
-   }
   
 </style>
     </head>
@@ -38,15 +30,22 @@ body {font-family: "Lato", sans-serif}
         <div class="w3-top">
   <div class="w3-bar w3-black w3-card">
        {% if user.is_authenticated %}
-          <!--  <a href="{% url 'post_draft_list' %}" class="top-menu "> <i class="fas fa-calendar-times"></i> </a> -->
+            <a href="{% url 'post_draft_list' %}" class="top-menu "> <i class="fas fa-calendar-times"></i> </a>
     <a href="{% url 'post_new' %}" class="top-menu"><i class="fas fa-plus-circle"></i></a>
 {% endif %}
     <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Вгору</a>
-    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Про нас</a>
-    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Улюбленці</a>
-    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Контакти</a>
-    
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a>
+    <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TOUR</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+    <div class="w3-dropdown-hover w3-hide-small">
+      <button class="w3-padding-large w3-button" title="More">MORE <i class="fa fa-caret-down"></i></button>     
+      <div class="w3-dropdown-content w3-bar-block w3-card-4">
+        <a href="#" class="w3-bar-item w3-button">Merchandise</a>
+        <a href="#" class="w3-bar-item w3-button">Extras</a>
+        <a href="#" class="w3-bar-item w3-button">Media</a>
+      </div>
+    </div>
     <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
   </div>
 </div>
@@ -63,35 +62,29 @@ body {font-family: "Lato", sans-serif}
 <div class="w3-content" style="max-width:2000px;max-height:500px;margin-top:46px">
 
   <!-- Automatic Slideshow Images -->
-  <div class="mySlides w3-display-container w3-left">
+  <div class="mySlides w3-display-container w3-center">
     <img src="https://images.pexels.com/photos/825949/pexels-photo-825949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" style="width:100%">
-    <div class="w3-display-topleft w3-container w3-text-black w3-padding-32 w3-hide-big" >
-      <h1>У щасливої собаки - <span class="colortext">Мокрий Ніс </span>  </h1>
-      <h3>Прилаштуйте бездомну собаку, і вона стане для Вас найкращим другом <br> <span class="colortext">A </span> ви для неї цілим Всесвітом ! </h3>   
+    <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-big"  >
+      <h3>Los Angeles</h3>
+      <p><b>We had the best time playing at Venice Beach!</b></p>   
     </div>
-    <div class="w3-display-bottomright w3-container w3-text-black w3-padding-32 w3-hide-big"  >
-      <h1>Привіт,я <span class="colortext">Тузик </span> - <br>забери мене і я буду <br> <span class="colortext">оберігати </span> твій <br>міцний сон вночі  </h1> </div>
   </div>
   
   
 <!-- Page content -->
 <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
-  <!-- The Band Section -->
-  <div class="w3-container w3-content w3-left w3-padding-64" style="max-width:800px" id="band">
-    <h2 class="w3-wide">THE <span class="colortext">Мокрий Ніс </span>.</h2>
-    <p class="w3-opacity"><i>Ми піклуємось про чотирилапих</i></p>
-    <p class="w3-justify">Наша волонтерська організація 'Мокрий Ніс' допомагає не байдужим  <span class="colortext">людям </span> знайти та прилаштувати  свого чотирилапого улюбленця .Також ми проводимо заходи із захисту наших "маленьких" друзів.<br>Центр функціонує на благодійній та волонтерській основі, отож будь-яка допомога,чи то <span class="colortext">матеріальна </span> (корм,ліки для тварин, нашийники , і тд.), чи то <span class="colortext">інформаційна </span> (поширення інформації, допомога в соц.мережах ..) вітається.
-    <br> Як говорив Алексис Токвіль: "Байдужість - тяжка хвороба душі.", отож <span class="colortext">не будь байдужим </span> до менших чотирилапих.</p><br>
-    <h3>
-      У розділі нижче ти знайдеш всю потрібну інформацію про вільних улюбленців, які чекають на зустріч з тобою.
-    </h3> </div> 
-           
-           <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="tor">
-    <img src="https://i2.wp.com/freepngimages.com/wp-content/uploads/2014/04/dog_and_cat_1_2.png?fit=472%2C261" style="max-height: 300px;max-width: 700px"></div>
   
-  <div class="w3-container w3-content w3-center w3-padding-100" style="max-width:2200px" id="tour">
-    <h2 class="w3-wide">Список вільних улюбленців</h2>
+  
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide">THE BAND</h2>
+    <p class="w3-opacity"><i>We love music</i></p>
+    <p class="w3-justify">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> </div> 
+           
+  
         <div class="layer">
         <div class="content container">
             <div class="row">
@@ -106,22 +99,28 @@ body {font-family: "Lato", sans-serif}
             </div>
         </div>
         </div>
-    </div>
         <!-- The Contact Section -->
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-    <h2 class="w3-wide w3-center">Контакти</h2>
-    <p class="w3-opacity w3-center"><i>Зацікавились? Неодмінно заповніть форму,яку ми якнайшвидше розглянемо !</i><br></p>
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
     <div class="w3-row w3-padding-32">
       <div class="w3-col m6 w3-large w3-margin-bottom">
-        <i class="fa fa-map-marker" style="width:30px"></i> Трускавець, UK<br>
-        <i class="fa fa-phone" style="width:30px"></i> Телефон: +00 151515<br>
-        <i class="fa fa-envelope" style="width:30px"> </i> Пошта: mail@mail.com<br>
+        <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
       </div>
       <div class="w3-col m6">
-        <form  >
-          <div class="w3-row-padding" >
-            <img src="https://static.tildacdn.com/tild3763-6239-4461-b664-653336663036/logo_lockup_forms_ic.png" style=" max-width: 400px; max-height: 200px">
-          <button class="w3-button w3-black w3-section w3-center" type="submit">Заповнити форму</button>
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
         </form>
       </div>
     </div>
@@ -141,7 +140,7 @@ body {font-family: "Lato", sans-serif}
   <i class="fa fa-pinterest-p w3-hover-opacity"></i>
   <i class="fa fa-twitter w3-hover-opacity"></i>
   <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p class="w3-medium"> <a href="#" target="_blank">Стиль сайту</a></p>
+  <p class="w3-medium">Include css from <a href="#" target="_blank">w3.css</a></p>
 </footer>
 
 <script>
